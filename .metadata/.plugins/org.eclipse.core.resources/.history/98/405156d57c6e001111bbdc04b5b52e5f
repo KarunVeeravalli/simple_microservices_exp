@@ -1,0 +1,5 @@
+package com.questions.repo;
+
+public interface QuestionsRepo {
+
+}

@@ -1,0 +1,39 @@
+package com.questions.servicesImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.stereotype.Service;
+
+import com.questions.entities.Questions;
+import com.questions.repo.QuestionsRepo;
+import com.questions.services.QuestionServices;
+
+@Service
+public class QuestionServicesImpl implements QuestionServices{
+	
+	@Autowired
+	private QuestionsRepo repo;
+
+	@Override
+	public Questions getQuestionById(Long id) {
+		return repo.findById(id).orElseThrow(()-> new RuntimeException("No Question found with id "+id));
+	}
+
+	@Override
+	public List<Questions> getAllQuestions() {
+		return repo.findAll();
+	}
+
+	@Override
+	public Questions addQuestion(Questions questions) {
+		return repo.save(questions);
+	}
+
+	@Override
+	public List<Questions> getAllQuestionsByQuizId(Long id) {
+		return repo.findByQuizId(id);
+	}
+
+}

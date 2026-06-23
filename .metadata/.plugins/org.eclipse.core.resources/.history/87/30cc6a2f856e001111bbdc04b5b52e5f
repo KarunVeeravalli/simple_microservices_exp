@@ -1,0 +1,4 @@
+spring.application.name=SERVICE-REGISTY
+
+
+server.port=8083

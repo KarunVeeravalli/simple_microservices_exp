@@ -1,0 +1,37 @@
+package com.quiz.serviceImpl;
+
+import javax.management.RuntimeErrorException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.stereotype.Service;
+
+import com.quiz.entities.Quiz;
+import com.quiz.repo.QuizRepo;
+import com.quiz.service.QuizService;
+
+@Service
+public class QuizSeviceImpl implements QuizService{
+	
+	@Autowired
+	private QuizRepo repo;
+
+	
+	@Override
+	public Quiz getQuiz(Long id) {
+		return repo.findById(id).orElseThrow(()->  new RuntimeException( "NO Quiz found with id "+id));
+	}
+
+	@Override
+	public Quiz addQuiz(Quiz quiz) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quiz getAllQuiz() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,33 @@
+spring.application.name=API-GATEWAY
+
+server.port=8999
+
+#routes	 config
+# 1. Unique ID for the route
+#spring.cloud.gateway.routes[0].id=QUIZ-SERVICE
+#
+## 2. Tell Gateway to use the load balancer ("lb://") to look up the service in Eureka
+#spring.cloud.gateway.routes[0].uri=lb://QUIZ-SERVICE
+#
+## 3. CRUCIAL: Match the incoming request path (e.g., http://localhost:8080/quiz/...)
+#spring.cloud.gateway.routes[0].predicates[0]=Path=/quiz/**
+##spring.cloud.gateway.routes[0].predicates[0]=Path=/quiz/**, /quiz-test/**
+
+
+spring.cloud.gateway.routes[0].id=QUIZ-SERVICE
+spring.cloud.gateway.routes[0].uri=lb://QUIZ-SERVICE
+spring.cloud.gateway.routes[0].predicates[0]=Path=/quiz/**
+
+
+
+
+
+# 1. Unique ID for the route
+spring.cloud.gateway.routes[1].id=QUESTION-SERVICES
+
+# 2. Tell Gateway to use the load balancer ("lb://") to look up the service in Eureka
+spring.cloud.gateway.routes[1].uri=lb://QUESTION-SERVICES
+
+# 3. CRUCIAL: Match the incoming request path (e.g., http://localhost:8080/quiz/...)
+spring.cloud.gateway.routes[1].predicates[0]=Path=/questions/**
+
